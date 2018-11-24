@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+
+  test:
+    hostname: example
+    container_name: example
+    image: nginx
+    restart: always
+    ports:
+      - "80"
+    networks:
+      - traefik
+    labels:
+      - "traefik.enabled=true"
+      - "traefik.frontend=test"
+      - "traefik.backend=test"
+      - "traefik.frontend.rule=Host:example.com,www.example.com"
+      - "traefik.port=80"
+
+networks:
+  traefik:
+    external:
+      name: traefik
