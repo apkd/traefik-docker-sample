@@ -1,0 +1,32 @@
+defaultEntryPoints = ["http", "https"]
+#insecureSkipVerify = true
+
+[entryPoints]
+  [entryPoints.http]
+    address = ":80"
+
+    [entryPoints.http.proxyProtocol]
+      trustedIPs = ["127.0.0.1/32", "172.28.179.200"]
+      # insecure = true
+
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+
+  [entryPoints.https]
+    address = ":443"
+
+    [entryPoints.https.proxyProtocol]
+      trustedIPs = ["127.0.0.1/32", "172.28.179.200"]
+      # insecure = true
+
+    [entryPoints.https.tls]
+
+
+[acme]
+  email = "apkd@users.noreply.github.com"
+  storage = "acme.json"
+  caServer = "https://acme-v02.api.letsencrypt.org/directory"
+  entryPoint = "https"
+  onHostRule = true	
+
+  [acme.tlsChallenge]
