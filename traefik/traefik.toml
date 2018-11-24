@@ -3,22 +3,11 @@ defaultEntryPoints = ["http", "https"]
 
 [entryPoints]
   [entryPoints.http]
-    address = ":80"
-
-    [entryPoints.http.proxyProtocol]
-      trustedIPs = ["127.0.0.1/32", "172.28.179.200"]
-      # insecure = true
-
+  address = ":80"
     [entryPoints.http.redirect]
-    entryPoint = "https"
-
+      entryPoint = "https"
   [entryPoints.https]
-    address = ":443"
-
-    [entryPoints.https.proxyProtocol]
-      trustedIPs = ["127.0.0.1/32", "172.28.179.200"]
-      # insecure = true
-
+  address = ":443"
     [entryPoints.https.tls]
 
 
